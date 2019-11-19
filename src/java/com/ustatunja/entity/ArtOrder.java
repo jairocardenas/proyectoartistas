@@ -56,10 +56,10 @@ public class ArtOrder implements Serializable {
     @JoinColumn(name = "idproduct", referencedColumnName = "idproduct", nullable = false)
     private Product idproduct;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrackingstatus")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartorder")
     private Collection<TrackingTicket> trackingTicketCollection;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idinvoice")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartorder")
     private Collection<Invoice> invoiceCollection;
 
     public ArtOrder() {

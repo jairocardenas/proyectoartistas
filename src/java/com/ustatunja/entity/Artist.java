@@ -67,7 +67,7 @@ public class Artist implements Serializable {
     @Column(name = "active", nullable = false)
     private String active;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartorder")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartist")
     private Collection<ArtOrder> artOrderCollection;
 
     public Artist() {

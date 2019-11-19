@@ -67,7 +67,7 @@ public class Client implements Serializable {
     @Column(name = "active", nullable = false)
     private String active;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartorder")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclient")
     private Collection<ArtOrder> artOrderCollection;
 
     public Client() {

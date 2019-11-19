@@ -44,7 +44,7 @@ public class ProductType implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproduct")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproducttype")
     private Collection<Product> idproduct;
 
     public ProductType() {

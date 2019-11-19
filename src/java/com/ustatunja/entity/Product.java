@@ -56,7 +56,7 @@ public class Product implements Serializable {
     @JoinColumn(name = "idproducttype", referencedColumnName = "idproducttype", nullable = false)
     private ProductType idproducttype;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartorder")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproduct")
     private Collection<ArtOrder> artOrderCollection;
 
     public Product() {
