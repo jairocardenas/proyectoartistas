@@ -37,8 +37,8 @@ public class TrackingTicket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "idtrackingticket")
+    private Integer idtrackingticket;
 
     @Basic(optional = false)
     @NotNull
@@ -47,29 +47,24 @@ public class TrackingTicket implements Serializable {
     private Date date;
 
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "status", referencedColumnName = "id", nullable = false)
-    private TrackingStatus status;
-
-    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "art_order", referencedColumnName = "id", nullable = false)
-    private ArtOrder art_order;
+    @JoinColumn(name = "idtrackingstatus", referencedColumnName = "idtrackingstatus", nullable = false)
+    private TrackingStatus idtrackingstatus;
 
     public TrackingTicket() {
     }
 
-    public TrackingTicket(Integer id, Date date, TrackingStatus status, ArtOrder art_order) {
-        this.id = id;
+    public TrackingTicket(Integer idtrackingticket, Date date, TrackingStatus idtrackingstatus) {
+        this.idtrackingticket = idtrackingticket;
         this.date = date;
-        this.status = status;
-        this.art_order = art_order;
+        this.idtrackingstatus = idtrackingstatus;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdtrackingticket() {
+        return idtrackingticket;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdtrackingticket(Integer idtrackingticket) {
+        this.idtrackingticket = idtrackingticket;
     }
 
     public Date getDate() {
@@ -80,29 +75,20 @@ public class TrackingTicket implements Serializable {
         this.date = date;
     }
 
-    public TrackingStatus getStatus() {
-        return status;
+    public TrackingStatus getIdtrackingstatus() {
+        return idtrackingstatus;
     }
 
-    public void setStatus(TrackingStatus status) {
-        this.status = status;
-    }
-
-    public ArtOrder getArt_order() {
-        return art_order;
-    }
-
-    public void setArt_order(ArtOrder art_order) {
-        this.art_order = art_order;
+    public void setIdtrackingstatus(TrackingStatus idtrackingstatus) {
+        this.idtrackingstatus = idtrackingstatus;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.date);
-        hash = 37 * hash + Objects.hashCode(this.status);
-        hash = 37 * hash + Objects.hashCode(this.art_order);
+        hash = 17 * hash + Objects.hashCode(this.idtrackingticket);
+        hash = 17 * hash + Objects.hashCode(this.date);
+        hash = 17 * hash + Objects.hashCode(this.idtrackingstatus);
         return hash;
     }
 
@@ -118,16 +104,13 @@ public class TrackingTicket implements Serializable {
             return false;
         }
         final TrackingTicket other = (TrackingTicket) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idtrackingticket, other.idtrackingticket)) {
             return false;
         }
         if (!Objects.equals(this.date, other.date)) {
             return false;
         }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.art_order, other.art_order)) {
+        if (!Objects.equals(this.idtrackingstatus, other.idtrackingstatus)) {
             return false;
         }
         return true;
@@ -135,7 +118,12 @@ public class TrackingTicket implements Serializable {
 
     @Override
     public String toString() {
-        return "TrackingTicket{" + "id=" + id + ", date=" + date + ", status=" + status + ", art_order=" + art_order + '}';
+        return "TrackingTicket{" + "idtrackingticket=" + idtrackingticket + ", date=" + date + ", idtrackingstatus=" + idtrackingstatus + '}';
     }
+    
+    
+    
 
+   
+    
 }

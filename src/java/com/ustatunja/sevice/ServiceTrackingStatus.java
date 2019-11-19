@@ -5,8 +5,12 @@
  */
 package com.ustatunja.sevice;
 
-import com.ustatunja.controller.TrackingStatusController;
 import com.ustatunja.entity.TrackingStatus;
+import com.ustatunja.facade.TrackingStatusFacade;
+import java.io.Serializable;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.enterprise.context.SessionScoped;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -16,17 +20,29 @@ import javax.jws.WebParam;
  * @author camol
  */
 @WebService(serviceName = "ServiceTrackingStatus")
-public class ServiceTrackingStatus {
+public class ServiceTrackingStatus implements Serializable {
 
-    private TrackingStatusController objTrackingStatus;
+    @EJB
+    private TrackingStatusFacade objF;
 
     public ServiceTrackingStatus() {
-        objTrackingStatus = new TrackingStatusController();
 
     }
 
-    @WebMethod(operationName = "addTrackingStatus")
-    public String hello(@WebParam(name = "name") String name) {
-        return objTrackingStatus.addPerson(name);
+    /**
+     * This is a sample web service operation
+     */
+    @WebMethod(operationName = "hello")
+    public String add(@WebParam(name = "name") String name) {
+        TrackingStatus objP;
+        objP = new TrackingStatus();
+        objP.setName(name);
+        objF.add(objP);
+        if (objP != null) {
+            return "mano ha sido bien";
+        } else {
+            return "Hello " + "sss" + " !";
+        }
+
     }
 }

@@ -35,8 +35,8 @@ public class TrackingStatus implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "idtrackingstatus")
+    private Integer idtrackingstatus;
 
     @Basic(optional = false)
     @Size(min = 1, max = 255)
@@ -44,24 +44,24 @@ public class TrackingStatus implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrackingstatus")
     private Collection<TrackingTicket> personaCollection;
 
     public TrackingStatus() {
     }
 
-    public TrackingStatus(Integer id, String name, Collection<TrackingTicket> personaCollection) {
-        this.id = id;
+    public TrackingStatus(Integer idtrackingstatus, String name, Collection<TrackingTicket> personaCollection) {
+        this.idtrackingstatus = idtrackingstatus;
         this.name = name;
         this.personaCollection = personaCollection;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdtrackingstatus() {
+        return idtrackingstatus;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdtrackingstatus(Integer idtrackingstatus) {
+        this.idtrackingstatus = idtrackingstatus;
     }
 
     public String getName() {
@@ -74,9 +74,9 @@ public class TrackingStatus implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.id);
-        hash = 47 * hash + Objects.hashCode(this.name);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.idtrackingstatus);
+        hash = 37 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -95,7 +95,7 @@ public class TrackingStatus implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idtrackingstatus, other.idtrackingstatus)) {
             return false;
         }
         return true;
@@ -103,8 +103,10 @@ public class TrackingStatus implements Serializable {
 
     @Override
     public String toString() {
-        return "TrackingStatus{" + "id=" + id + ", name=" + name + '}';
+        return "TrackingStatus{" + "idtrackingstatus=" + idtrackingstatus + ", name=" + name + '}';
     }
+
+    
     
     
     
