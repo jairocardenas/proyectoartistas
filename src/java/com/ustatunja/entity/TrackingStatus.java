@@ -45,15 +45,15 @@ public class TrackingStatus implements Serializable {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrackingstatus")
-    private Collection<TrackingTicket> personaCollection;
+    private Collection<TrackingTicket> trackingTicketCollection;
 
     public TrackingStatus() {
     }
 
-    public TrackingStatus(Integer idtrackingstatus, String name, Collection<TrackingTicket> personaCollection) {
+    public TrackingStatus(Integer idtrackingstatus, String name, Collection<TrackingTicket> trackingTicketCollection) {
         this.idtrackingstatus = idtrackingstatus;
         this.name = name;
-        this.personaCollection = personaCollection;
+        this.trackingTicketCollection = trackingTicketCollection;
     }
 
     public Integer getIdtrackingstatus() {
@@ -72,11 +72,19 @@ public class TrackingStatus implements Serializable {
         this.name = name;
     }
 
+    public Collection<TrackingTicket> getTrackingTicketCollection() {
+        return trackingTicketCollection;
+    }
+
+    public void setTrackingTicketCollection(Collection<TrackingTicket> trackingTicketCollection) {
+        this.trackingTicketCollection = trackingTicketCollection;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.idtrackingstatus);
-        hash = 37 * hash + Objects.hashCode(this.name);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.idtrackingstatus);
+        hash = 97 * hash + Objects.hashCode(this.name);
         return hash;
     }
 

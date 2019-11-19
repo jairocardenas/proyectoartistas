@@ -9,8 +9,6 @@ import com.ustatunja.entity.TrackingStatus;
 import com.ustatunja.facade.TrackingStatusFacade;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.enterprise.context.SessionScoped;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

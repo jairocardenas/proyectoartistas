@@ -50,13 +50,18 @@ public class TrackingTicket implements Serializable {
     @JoinColumn(name = "idtrackingstatus", referencedColumnName = "idtrackingstatus", nullable = false)
     private TrackingStatus idtrackingstatus;
 
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idartorder", referencedColumnName = "idartorder", nullable = false)
+    private ArtOrder idartorder;
+
     public TrackingTicket() {
     }
 
-    public TrackingTicket(Integer idtrackingticket, Date date, TrackingStatus idtrackingstatus) {
+    public TrackingTicket(Integer idtrackingticket, Date date, TrackingStatus idtrackingstatus, ArtOrder idartorder) {
         this.idtrackingticket = idtrackingticket;
         this.date = date;
         this.idtrackingstatus = idtrackingstatus;
+        this.idartorder = idartorder;
     }
 
     public Integer getIdtrackingticket() {
@@ -83,12 +88,21 @@ public class TrackingTicket implements Serializable {
         this.idtrackingstatus = idtrackingstatus;
     }
 
+    public ArtOrder getIdartorder() {
+        return idartorder;
+    }
+
+    public void setIdartorder(ArtOrder idartorder) {
+        this.idartorder = idartorder;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.idtrackingticket);
-        hash = 17 * hash + Objects.hashCode(this.date);
-        hash = 17 * hash + Objects.hashCode(this.idtrackingstatus);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.idtrackingticket);
+        hash = 53 * hash + Objects.hashCode(this.date);
+        hash = 53 * hash + Objects.hashCode(this.idtrackingstatus);
+        hash = 53 * hash + Objects.hashCode(this.idartorder);
         return hash;
     }
 
@@ -113,17 +127,18 @@ public class TrackingTicket implements Serializable {
         if (!Objects.equals(this.idtrackingstatus, other.idtrackingstatus)) {
             return false;
         }
+        if (!Objects.equals(this.idartorder, other.idartorder)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "TrackingTicket{" + "idtrackingticket=" + idtrackingticket + ", date=" + date + ", idtrackingstatus=" + idtrackingstatus + '}';
+        return "TrackingTicket{" + "idtrackingticket=" + idtrackingticket + ", date=" + date + ", idtrackingstatus=" + idtrackingstatus + ", idartorder=" + idartorder + '}';
     }
-    
     
     
 
    
-    
 }
