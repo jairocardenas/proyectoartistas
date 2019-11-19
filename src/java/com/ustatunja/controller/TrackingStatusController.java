@@ -7,9 +7,8 @@ package com.ustatunja.controller;
 
 import com.ustatunja.entity.TrackingStatus;
 import com.ustatunja.facade.TrackingStatusFacade;
-import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+
 
 
 /**
