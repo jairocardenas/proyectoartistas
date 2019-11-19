@@ -1,4 +1,3 @@
-
 package com.ustatunja.entity;
 
 import java.io.Serializable;
@@ -18,19 +17,21 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "coupon_type")
-public class CouponType implements Serializable{
-private static final long serialVersionUID = 1L;
+public class CouponType implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcoupontype")
     private Integer idcoupontype;
-    
+
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcoupon")
     private Collection<Coupon> couponCollection;
 
@@ -100,6 +101,5 @@ private static final long serialVersionUID = 1L;
     public String toString() {
         return "CouponType{" + "idcoupontype=" + idcoupontype + ", name=" + name + ", couponCollection=" + couponCollection + '}';
     }
-    
-    
+
 }

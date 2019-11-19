@@ -22,19 +22,21 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "payment_status")
-public class PaymentStatus implements Serializable{
+public class PaymentStatus implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpaymentstatus")
     private Integer idpaymentstatus;
-    
+
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpaymentstatus")
     private Collection<Invoice> invoiceCollection;
 
@@ -104,6 +106,5 @@ public class PaymentStatus implements Serializable{
     public String toString() {
         return "PaymentStatus{" + "idpaymentstatus=" + idpaymentstatus + ", name=" + name + ", invoiceCollection=" + invoiceCollection + '}';
     }
-    
-    
+
 }

@@ -20,7 +20,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "invoice")
 public class Invoice implements Serializable {
-private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idinvoice")
@@ -36,11 +38,11 @@ private static final long serialVersionUID = 1L;
     @NotNull
     @Column(name = "price", nullable = false)
     private Float price;
-    
+
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idartorder", referencedColumnName = "idartorder", nullable = false)
     private ArtOrder idartorder;
-    
+
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idpaymentstatus", referencedColumnName = "idpaymentstatus", nullable = false)
     private PaymentStatus idpaymentstatus;
@@ -158,7 +160,5 @@ private static final long serialVersionUID = 1L;
     public String toString() {
         return "Invoice{" + "idinvoice=" + idinvoice + ", date=" + date + ", price=" + price + ", idartorder=" + idartorder + ", idpaymentstatus=" + idpaymentstatus + ", idcoupon=" + idcoupon + '}';
     }
-    
-    
 
 }
