@@ -5,7 +5,6 @@
  */
 package com.ustatunja.entity;
 
-import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,14 +13,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author camol
  */
 @Entity
-@Table(name = "art_order")
-public class ArtOrder implements Serializable {
+@Table(name = "product_type")
+public class ProductType {
 
     /**
      *
@@ -30,16 +30,12 @@ public class ArtOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idartorder")
-    private Integer idartorder;
+    @Column(name = "idproducttype")
+    private Integer idproducttype;
 
     @Basic(optional = false)
+    @Size(min = 1, max = 255)
     @NotNull
-    @Column(name = "active", nullable = false)
-    private Boolean active;
-
-    private Artist idartist;
-    private Client idclient;
-    private Product idproduct;
-
+    @Column(name = "name", nullable = false)
+    private String name;
 }

@@ -14,14 +14,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author camol
  */
 @Entity
-@Table(name = "art_order")
-public class ArtOrder implements Serializable {
+@Table(name = "product")
+public class Product implements Serializable {
 
     /**
      *
@@ -30,16 +31,20 @@ public class ArtOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idartorder")
-    private Integer idartorder;
+    @Column(name = "idproduct")
+    private Integer idproduct;
 
     @Basic(optional = false)
+    @Size(min = 1, max = 255)
     @NotNull
-    @Column(name = "active", nullable = false)
-    private Boolean active;
+    @Column(name = "title", nullable = false)
+    private String title;
 
-    private Artist idartist;
-    private Client idclient;
-    private Product idproduct;
+    @Basic(optional = false)
+    @Size(min = 1, max = 1000)
+    @NotNull
+    @Column(name = "description", nullable = false)
+    private String description;
 
+    private ProductType idproducttype;
 }
