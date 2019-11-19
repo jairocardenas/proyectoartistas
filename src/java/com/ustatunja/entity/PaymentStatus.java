@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "payment_status")
 public class PaymentStatus implements Serializable{
-    
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpaymentstatus")

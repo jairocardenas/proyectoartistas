@@ -19,7 +19,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "coupon_type")
 public class CouponType implements Serializable{
-
+private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcoupontype")

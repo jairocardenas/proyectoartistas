@@ -29,6 +29,7 @@ import javax.validation.constraints.Size;
 @Table(name = "coupon")
 public class Coupon implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcoupon")
@@ -50,10 +51,10 @@ public class Coupon implements Serializable {
     @NotNull
     @Column(name = "amount", nullable = false)
     private Float amount;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcoupon")
     private Collection<Invoice> invoiceCollection;
-    
+
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idcoupontype", referencedColumnName = "idcoupontype", nullable = false)
     private CouponType idcoupontype;
@@ -163,6 +164,5 @@ public class Coupon implements Serializable {
     public String toString() {
         return "Coupon{" + "idcoupon=" + idcoupon + ", coupon_number=" + coupon_number + ", date=" + date + ", amount=" + amount + ", invoiceCollection=" + invoiceCollection + ", idcoupontype=" + idcoupontype + '}';
     }
-    
-    
+
 }
