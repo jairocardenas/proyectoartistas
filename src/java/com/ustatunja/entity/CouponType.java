@@ -32,7 +32,7 @@ public class CouponType implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcoupon")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcoupons")
     private Collection<Coupon> couponCollection;
 
     public CouponType() {

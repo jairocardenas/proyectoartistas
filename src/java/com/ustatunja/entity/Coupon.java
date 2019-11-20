@@ -58,19 +58,7 @@ public class Coupon implements Serializable {
 
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idcoupontype", referencedColumnName = "idcoupontype", nullable = false)
-    private CouponType idcoupontype;
-
-    public Coupon() {
-    }
-
-    public Coupon(Integer idcoupon, String coupon_number, Date date, Float amount, Collection<Invoice> invoiceCollection, CouponType idcoupontype) {
-        this.idcoupon = idcoupon;
-        this.coupon_number = coupon_number;
-        this.date = date;
-        this.amount = amount;
-        this.invoiceCollection = invoiceCollection;
-        this.idcoupontype = idcoupontype;
-    }
+    private CouponType idcoupons;
 
     public Integer getIdcoupon() {
         return idcoupon;
@@ -112,58 +100,13 @@ public class Coupon implements Serializable {
         this.invoiceCollection = invoiceCollection;
     }
 
-    public CouponType getIdcoupontype() {
-        return idcoupontype;
+    public CouponType getIdcoupons() {
+        return idcoupons;
     }
 
-    public void setIdcoupontype(CouponType idcoupontype) {
-        this.idcoupontype = idcoupontype;
+    public void setIdcoupons(CouponType idcoupons) {
+        this.idcoupons = idcoupons;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.idcoupon);
-        hash = 29 * hash + Objects.hashCode(this.coupon_number);
-        hash = 29 * hash + Objects.hashCode(this.date);
-        hash = 29 * hash + Objects.hashCode(this.amount);
-        hash = 29 * hash + Objects.hashCode(this.idcoupontype);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Coupon other = (Coupon) obj;
-        if (!Objects.equals(this.coupon_number, other.coupon_number)) {
-            return false;
-        }
-        if (!Objects.equals(this.idcoupon, other.idcoupon)) {
-            return false;
-        }
-        if (!Objects.equals(this.date, other.date)) {
-            return false;
-        }
-        if (!Objects.equals(this.amount, other.amount)) {
-            return false;
-        }
-        if (!Objects.equals(this.idcoupontype, other.idcoupontype)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Coupon{" + "idcoupon=" + idcoupon + ", coupon_number=" + coupon_number + ", date=" + date + ", amount=" + amount + ", invoiceCollection=" + invoiceCollection + ", idcoupontype=" + idcoupontype + '}';
-    }
-
+   
+    
 }
