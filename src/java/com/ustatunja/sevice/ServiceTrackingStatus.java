@@ -8,6 +8,7 @@ package com.ustatunja.sevice;
 import com.ustatunja.entity.TrackingStatus;
 import com.ustatunja.facade.TrackingStatusFacade;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -22,6 +23,7 @@ public class ServiceTrackingStatus implements Serializable {
 
     @EJB
     private TrackingStatusFacade objF;
+    private TrackingStatus objStatus;
 
     public ServiceTrackingStatus() {
 
@@ -30,17 +32,37 @@ public class ServiceTrackingStatus implements Serializable {
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String add(@WebParam(name = "name") String name) {
-        TrackingStatus objP;
-        objP = new TrackingStatus();
-        objP.setName(name);
-        objF.add(objP);
-        if (objP != null) {
+    public TrackingStatus getSelected() {
+        if (this.objStatus == null) {
+            this.objStatus = new TrackingStatus();
+        }
+        return this.objStatus;
+    }
+
+//    @WebMethod(operationName = "add")
+//    public String add() {
+//        getSelected();
+//        objF.add(objStatus);
+//        if (objStatus != null) {
+//            return "mano ha sido bien";
+//        } else {
+//            return "Hello " + "sss" + " !";
+//        }
+//
+//    }
+    @WebMethod(operationName = "hehehe")
+    public String addT() {
+        getSelected();
+        objF.add(objStatus);
+        if (objStatus != null) {
             return "mano ha sido bien";
         } else {
             return "Hello " + "sss" + " !";
         }
+    }
 
+    @WebMethod(operationName = "list")
+    public List<TrackingStatus> getT() {
+        return objF.loadAll();
     }
 }

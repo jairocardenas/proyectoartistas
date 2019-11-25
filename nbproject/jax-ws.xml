@@ -4,6 +4,12 @@
     <service name="ServiceTrackingStatus">
       <implementation-class>com.ustatunja.sevice.ServiceTrackingStatus</implementation-class>
     </service>
+    <service name="ServiceClient">
+      <implementation-class>com.ustatunja.sevice.ServiceClient</implementation-class>
+    </service>
+    <service name="ProductTypeService">
+      <implementation-class>com.ustatunja.sevice.ProductTypeService</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

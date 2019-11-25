@@ -65,7 +65,7 @@ public class Client implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "active", nullable = false)
-    private String active;
+    private Boolean active;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclient")
     private Collection<ArtOrder> artOrderCollection;
@@ -73,7 +73,7 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(Integer idclient, String first_name, String last_name, String email, String password, String active, Collection<ArtOrder> artOrderCollection) {
+    public Client(Integer idclient, String first_name, String last_name, String email, String password, Boolean active, Collection<ArtOrder> artOrderCollection) {
         this.idclient = idclient;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -123,11 +123,11 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public String getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
@@ -141,13 +141,13 @@ public class Client implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + Objects.hashCode(this.idclient);
-        hash = 61 * hash + Objects.hashCode(this.first_name);
-        hash = 61 * hash + Objects.hashCode(this.last_name);
-        hash = 61 * hash + Objects.hashCode(this.email);
-        hash = 61 * hash + Objects.hashCode(this.password);
-        hash = 61 * hash + Objects.hashCode(this.active);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.idclient);
+        hash = 53 * hash + Objects.hashCode(this.first_name);
+        hash = 53 * hash + Objects.hashCode(this.last_name);
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + Objects.hashCode(this.active);
         return hash;
     }
 
@@ -175,10 +175,10 @@ public class Client implements Serializable {
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
-        if (!Objects.equals(this.active, other.active)) {
+        if (!Objects.equals(this.idclient, other.idclient)) {
             return false;
         }
-        if (!Objects.equals(this.idclient, other.idclient)) {
+        if (!Objects.equals(this.active, other.active)) {
             return false;
         }
         return true;
@@ -189,4 +189,5 @@ public class Client implements Serializable {
         return "Client{" + "idclient=" + idclient + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", password=" + password + ", active=" + active + '}';
     }
 
+   
 }
