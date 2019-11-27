@@ -45,8 +45,7 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-    
-    
+ 
 
     @Basic(optional = false)
     @Size(min = 1, max = 1000)
