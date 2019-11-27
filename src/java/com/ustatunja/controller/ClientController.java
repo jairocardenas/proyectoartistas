@@ -1,33 +1,31 @@
 package com.ustatunja.controller;
 
-import com.ustatunja.entity.ProductType;
-import com.ustatunja.facade.ProductTypeFacade;
-import java.io.Serializable;
+import com.ustatunja.entity.Client;
+import com.ustatunja.facade.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+
 @Stateless
-public class ProductTypeController implements Serializable {
+public class ClientController {
 
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private ProductTypeFacade objFacade;
-    private ProductType objCurrent;
+    private ClientFacade objFacade;
+    private Client objCurrent;
 
-    public ProductTypeController() {
-
+    public ClientController() {
     }
 
-    public String add(ProductType obj) {
-
+    public String add(Client object) {
         String title, detail;
 
         try {
             title = "¡Exito! \n";
             detail = "Se ha guardado correctamente";
-            getObjFacade().add(obj);
+            getObjFacade().add(object);
             return title + detail;
 
         } catch (Exception e) {
@@ -38,25 +36,25 @@ public class ProductTypeController implements Serializable {
 
     }
 
-    public List<ProductType> getProductType() {
+    public List<Client> list() {
         return getObjFacade().loadAll();
     }
 
-    public ProductTypeFacade getObjFacade() {
+    public ClientFacade getObjFacade() {
         return objFacade;
     }
 
-    public String deleteProductType(ProductType objectProductType) {
+    public String deleteClient(Client objectClient) {
         String title, detail;
 
-        if (objectProductType.getIdproduct().size() == 0) {
+        if (objectClient.getArtOrderCollection().size() == 0) {
             try {
-                this.objCurrent = objectProductType;
+                this.objCurrent = objectClient;
                 title = "¡Exito! \n";
                 detail = "Se ha borrado correctamente";
 
-                getObjFacade().delete(objectProductType);
-                this.objCurrent = new ProductType();
+                getObjFacade().delete(objectClient);
+                this.objCurrent = new Client();
                 return title + detail;
 
             } catch (Exception e) {
@@ -67,19 +65,19 @@ public class ProductTypeController implements Serializable {
 
         } else {
             title = "¡Error! \n";
-            detail = "Hay objetos asociados a este artista.";
+            detail = "Hay objetos asociados a este cliente.";
             return title + detail;
 
         }
     }
 
-    public String updateProductType(ProductType objectProductType) {
+    public String updateClient(Client objectClient) {
         String title, detail;
         try {
 
             title = "¡Exito! \n";
             detail = "Se ha actualizado correctamente";
-            getObjFacade().update(objectProductType);
+            getObjFacade().update(objectClient);
             return title + detail;
 
         } catch (Exception e) {
@@ -88,14 +86,6 @@ public class ProductTypeController implements Serializable {
             return title + detail;
         }
 
-    }
-
-    public ProductType findProductType(Integer id) {
-        return getObjFacade().find(id);
-    }
-
-    public void setObjFacade(ProductTypeFacade objFacade) {
-        this.objFacade = objFacade;
     }
 
 }

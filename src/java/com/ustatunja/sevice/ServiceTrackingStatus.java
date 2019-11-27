@@ -50,8 +50,8 @@ public class ServiceTrackingStatus implements Serializable {
 //        }
 //
 //    }
-    @WebMethod(operationName = "hehehe")
-    public String addT() {
+    @WebMethod(operationName = "add")
+    public String add() {
         getSelected();
         objF.add(objStatus);
         if (objStatus != null) {

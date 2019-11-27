@@ -5,6 +5,7 @@
  */
 package com.ustatunja.sevice;
 
+import com.ustatunja.controller.ClientController;
 import com.ustatunja.entity.Client;
 import com.ustatunja.facade.ClientFacade;
 import java.util.List;
@@ -21,31 +22,30 @@ import javax.jws.WebParam;
 public class ServiceClient {
 
     @EJB
-    private ClientFacade objFacade;
+    private ClientController objClientController;
+    private Client objClient;
 
-    @WebMethod(operationName = "add")
-    public String add(@WebParam(name = "name") String txt) {
-        Client objClient = new Client();
-        objClient.setFirst_name(txt);
-        objClient.setLast_name(txt);
-        objClient.setEmail(txt);
-        objClient.setPassword(txt);
+    public ServiceClient() {
+        objClient = new Client();
+    }
+
+    @WebMethod(operationName = "addClient")
+    public String addClient(@WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName,
+            @WebParam(name = "email") String email, @WebParam(name = "cont") String cont) {
+
+        objClient.setFirst_name(firstName);
+        objClient.setLast_name(lastName);
+        objClient.setEmail(email);
+        objClient.setPassword(cont);
         objClient.setActive(true);
 
-        objFacade.add(objClient);
-        if (objClient != null) {
-            return "mano ha sido bien";
-        } else {
-            return "mal";
-        }
+        return objClientController.add(objClient);
 
     }
 
-    @WebMethod(operationName = "list")
-    public List<Client> list() {
-        return objFacade.loadAll();
+    @WebMethod(operationName = "listClient")
+    public List<Client> listClient() {
+        return objClientController.list();
     }
-    
-    
 
 }

@@ -65,7 +65,7 @@ public class Artist implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "active", nullable = false)
-    private String active;
+    private boolean active;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idartist")
     private Collection<ArtOrder> artOrderCollection;
@@ -73,7 +73,7 @@ public class Artist implements Serializable {
     public Artist() {
     }
 
-    public Artist(Integer idartist, String display_name, String email, String paypal_email, String password, String active, Collection<ArtOrder> artOrderCollection) {
+    public Artist(Integer idartist, String display_name, String email, String paypal_email, String password, boolean active, Collection<ArtOrder> artOrderCollection) {
         this.idartist = idartist;
         this.display_name = display_name;
         this.email = email;
@@ -123,11 +123,11 @@ public class Artist implements Serializable {
         this.password = password;
     }
 
-    public String getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -141,13 +141,13 @@ public class Artist implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.idartist);
-        hash = 53 * hash + Objects.hashCode(this.display_name);
-        hash = 53 * hash + Objects.hashCode(this.email);
-        hash = 53 * hash + Objects.hashCode(this.paypal_email);
-        hash = 53 * hash + Objects.hashCode(this.password);
-        hash = 53 * hash + Objects.hashCode(this.active);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.idartist);
+        hash = 79 * hash + Objects.hashCode(this.display_name);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.paypal_email);
+        hash = 79 * hash + Objects.hashCode(this.password);
+        hash = 79 * hash + (this.active ? 1 : 0);
         return hash;
     }
 
@@ -163,6 +163,9 @@ public class Artist implements Serializable {
             return false;
         }
         final Artist other = (Artist) obj;
+        if (this.active != other.active) {
+            return false;
+        }
         if (!Objects.equals(this.display_name, other.display_name)) {
             return false;
         }
@@ -175,9 +178,6 @@ public class Artist implements Serializable {
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
-        if (!Objects.equals(this.active, other.active)) {
-            return false;
-        }
         if (!Objects.equals(this.idartist, other.idartist)) {
             return false;
         }
@@ -188,7 +188,5 @@ public class Artist implements Serializable {
     public String toString() {
         return "Artist{" + "idartist=" + idartist + ", display_name=" + display_name + ", email=" + email + ", paypal_email=" + paypal_email + ", password=" + password + ", active=" + active + '}';
     }
-    
-    
 
 }

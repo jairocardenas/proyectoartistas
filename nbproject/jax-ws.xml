@@ -10,6 +10,9 @@
     <service name="ProductTypeService">
       <implementation-class>com.ustatunja.sevice.ProductTypeService</implementation-class>
     </service>
+    <service name="ArtistService">
+      <implementation-class>com.ustatunja.sevice.ArtistService</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

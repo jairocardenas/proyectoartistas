@@ -36,4 +36,8 @@ public abstract class AbstractFacade<T> {
     public void update(T entity) {
         getEntityManager().merge(entity);
     }
+
+    public T find(Object id) {
+        return getEntityManager().find(entityClass, id);
+    }
 }
