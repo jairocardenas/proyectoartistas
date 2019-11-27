@@ -17,7 +17,7 @@ public class ProductTypeController implements Serializable {
     private ProductType objCurrent;
 
     public ProductTypeController() {
-
+//
     }
 
     public String add(ProductType obj) {

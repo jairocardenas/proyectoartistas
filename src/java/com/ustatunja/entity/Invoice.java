@@ -54,6 +54,11 @@ public class Invoice implements Serializable {
     public Invoice() {
     }
 
+    public Invoice(Date date, Float price) {
+        this.date = date;
+        this.price = price;
+    }
+
     public Invoice(Integer idinvoice, Date date, Float price, ArtOrder idartorder, PaymentStatus idpaymentstatus, Coupon idcoupon) {
         this.idinvoice = idinvoice;
         this.date = date;

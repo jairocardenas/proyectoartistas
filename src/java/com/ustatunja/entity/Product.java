@@ -45,6 +45,8 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
+    
+    
 
     @Basic(optional = false)
     @Size(min = 1, max = 1000)
@@ -61,6 +63,13 @@ public class Product implements Serializable {
 
     public Product() {
     }
+
+    public Product(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+    
+    
 
     public Product(Integer idproduct, String title, String description, ProductType idproducttype, Collection<ArtOrder> artOrderCollection) {
         this.idproduct = idproduct;
